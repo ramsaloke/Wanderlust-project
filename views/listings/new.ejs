@@ -1,4 +1,4 @@
-<!-- <% layout("/layouts/boilerplate") %>
+<% layout("/layouts/boilerplate") %>
 <div class="row mt-3">
     <div class="col-8 offset-2">
         <br><br>
@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label"> Image Link</label>
-                <input name="listing[image]" placeholder="enter image URL/Link" type="text" class="form-control">
+                <input name="listing[image][url]" placeholder="enter image URL/Link" type="text" class="form-control">
             </div>
             <div class="row">
                 <div class="mb-3 col-md-4">
@@ -40,34 +40,4 @@
             <button class="btn btn-dark add-btn mt-3 mb-5" type="submit">Add</button>
         </form>
     </div>
-</div> -->
-
-<!-- views/listings/new.ejs -->
-<form action="/listings" method="POST">
-    <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="listing[title]">
-    </div>
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="listing[description]"></textarea>
-    </div>
-    <div>
-        <label for="imageUrl">Image URL:</label>
-        <input type="text" id="imageUrl" name="listing[image][url]">
-    </div>
-    <div>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="listing[price]">
-    </div>
-    <div>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="listing[location]">
-    </div>
-    <div>
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="listing[country]">
-    </div>
-    <button type="submit">Add Listing</button>
-</form>
-
+</div>
