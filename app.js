@@ -73,7 +73,6 @@ app.get("/listings", async (req, res) => {
 
 
   //UPDATE route
-
   app.put("/listings/:id",async (req, res, next) => {
     let {id} = req.params;
     let {title, image, description, location, country, price}  = req.body.listing;
