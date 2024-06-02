@@ -32,6 +32,15 @@ app.get("/", (req, res) => {
   res.send("Hello, I am working");
 });
 
+const validateListing = (req,res,next) =>{
+  let {error} = listingSchema.validate(req.body);
+    
+if(error){
+ throw new ExpressError (400,error)
+}else{
+  next();
+}
+}
 
 // Index Route
 
@@ -58,9 +67,8 @@ app.get("/listings", wrapAsync( async (req, res) => {
 
   // create route
 
-  app.post("/listings", wrapAsync( async(req,res,next)=>{
-   let result = listingSchema.validate(req.body);
-   console.log(result);    
+  app.post("/listings", validateListing, wrapAsync( async(req,res,next)=>{
+
       const newListing =  new Listing(req.body.listing);
       await newListing.save();
       res.redirect("/listings")
@@ -79,7 +87,7 @@ app.get("/listings", wrapAsync( async (req, res) => {
 
   //UPDATE route
 
-app.put("/listings/:id", wrapAsync( async (req, res, next) => {
+app.put("/listings/:id", validateListing, wrapAsync( async (req, res, next) => {
   let { id } = req.params;
   let { title, description, location, country, price, image } = req.body.listing;
 
