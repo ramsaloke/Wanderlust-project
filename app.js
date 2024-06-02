@@ -7,6 +7,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const {listingSchema} = require("./Schema.js");
+
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 app.set("view engine", "ejs");
@@ -57,8 +59,8 @@ app.get("/listings", wrapAsync( async (req, res) => {
   // create route
 
   app.post("/listings", wrapAsync( async(req,res,next)=>{
-   
-    
+   let result = listingSchema.validate(req.body);
+   console.log(result);    
       const newListing =  new Listing(req.body.listing);
       await newListing.save();
       res.redirect("/listings")
