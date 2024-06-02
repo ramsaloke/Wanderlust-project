@@ -10,4 +10,3 @@ module.exports.listingShema = Joi.object({
     }).required() 
 });
 
-module.exports
