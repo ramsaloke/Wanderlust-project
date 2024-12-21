@@ -102,7 +102,7 @@ async function main() {
 }
 
 
-app.use("/",userRouter)
+app.use("/",listingRouter)
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 
